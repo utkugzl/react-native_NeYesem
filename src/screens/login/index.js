@@ -4,15 +4,17 @@ import {
   TouchableOpacity,
   Keyboard,
   KeyboardAvoidingView,
-  Text,
 } from "react-native";
-import { TextInput, HelperText, Button } from "react-native-paper";
+import { TextInput, HelperText, Button, Text } from "react-native-paper";
 import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import scaleByHeight from "../../utils/ScaleByHeight.js";
+import { useNavigation } from "@react-navigation/native";
 
 const Login = () => {
+  const navigation = useNavigation();
+
   const validationSchemaLogin = Yup.object({
     username: Yup.string().required("Username is required"),
     password: Yup.string().required("Password is required"),
@@ -51,7 +53,11 @@ const Login = () => {
         >
           <Image
             source={require("../../assets/loginLogo.png")}
-            style={{ width: scaleByHeight(45), height: scaleByHeight(45) }}
+            style={{
+              width: scaleByHeight(45),
+              height: scaleByHeight(45),
+              marginTop: 40,
+            }}
             resizeMode="contain"
           />
         </View>
@@ -83,7 +89,7 @@ const Login = () => {
             secureTextEntry={true}
             value={formik.values.password}
             onChangeText={formik.handleChange("password")}
-            //error={formik.errors.password}
+            error={formik.errors.password}
             style={{
               width: "90%",
               paddingLeft: 8,
@@ -96,7 +102,7 @@ const Login = () => {
           </HelperText>
           <Button
             mode="contained"
-            //onPress={formik.handleSubmit}
+            onPress={formik.handleSubmit}
             //loading={loading}
             style={{
               marginTop: 6,
@@ -118,6 +124,38 @@ const Login = () => {
           >
             Login
           </Button>
+          <View
+            style={{
+              flexDirection: "row",
+              marginTop: 10,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Text>Don't you have an account ?</Text>
+            <Button
+              onPress={() => {
+                navigation.navigate("Register");
+              }}
+              //loading={loading}
+              labelStyle={{
+                fontSize: 16,
+                fontWeight: "bold",
+              }}
+              style={{
+                shadowColor: "black",
+                shadowOffset: {
+                  width: 0,
+                  height: 2,
+                },
+                shadowOpacity: 0.25,
+                shadowRadius: 3.84,
+                elevation: 15,
+              }}
+            >
+              Register
+            </Button>
+          </View>
         </View>
       </KeyboardAvoidingView>
     </TouchableOpacity>
