@@ -4,7 +4,6 @@
     "slug": "ne_yesem",
     "version": "1.0.0",
     "orientation": "portrait",
-    //"icon": "./src/assets/logo.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {},
@@ -19,6 +18,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-font"
+    ]
   }
 }

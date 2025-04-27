@@ -26,11 +26,16 @@ const Login = () => {
       password: "",
     },
     validationSchema: validationSchemaLogin,
-    // onSubmit: values => {
-    //   onLoginPress(values);
-    // },
+    onSubmit: (values) => {
+      onLoginPress(values);
+    },
   });
 
+  const onLoginPress = (values) => {
+    if (values.username === "123" && values.password === "123") {
+      navigation.navigate("HomeTabs");
+    }
+  };
   return (
     <TouchableOpacity
       style={{ flex: 1, backgroundColor: "white" }}
