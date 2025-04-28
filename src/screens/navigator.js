@@ -34,7 +34,7 @@ const TabBarIconWrapper = ({ children, focused }) => (
 const HomeTabs = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Profile"
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {
@@ -194,7 +194,7 @@ const Nagivator = () => {
           {global.showSplash && (
             <Stack.Screen name="Splash" component={Splash} />
           )}
-          <Stack.Screen name="Login" component={Login} />
+          {/* <Stack.Screen name="Login" component={Login} /> */}
           <Stack.Screen name="HomeTabs" component={HomeTabs} />
           <Stack.Screen
             name="Register"
