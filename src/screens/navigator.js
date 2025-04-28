@@ -34,7 +34,7 @@ const TabBarIconWrapper = ({ children, focused }) => (
 const HomeTabs = () => {
   return (
     <Tab.Navigator
-      initialRouteName="Profile"
+      initialRouteName="Home"
       screenOptions={{
         tabBarShowLabel: false,
         tabBarStyle: {
