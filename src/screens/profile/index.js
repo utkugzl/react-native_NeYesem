@@ -3,8 +3,10 @@ import { View, ScrollView, TouchableOpacity } from "react-native";
 import { Text, Avatar, Card, Divider } from "react-native-paper";
 import { Ionicons } from "@expo/vector-icons";
 import ProfileButton from "../../components/ProfileButton.js";
+import { useNavigation } from "@react-navigation/native";
 
 const Profile = () => {
+  const navigaiton = useNavigation();
   return (
     <View
       style={{
@@ -131,7 +133,13 @@ const Profile = () => {
         <Divider />
         <ProfileButton iconName="information-circle-outline" text="Hakkında" />
         <Divider />
-        <ProfileButton iconName="log-out-outline" text="Çıkış Yap" />
+        <ProfileButton
+          iconName="log-out-outline"
+          text="Çıkış Yap"
+          onPress={() => {
+            navigaiton.navigate("Login");
+          }}
+        />
         <Divider />
       </ScrollView>
     </View>

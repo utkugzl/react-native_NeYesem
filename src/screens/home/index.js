@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { View, FlatList, Image } from "react-native";
-import { Text, Surface } from "react-native-paper";
+import { View, FlatList, Image, ScrollView } from "react-native";
+import { Text, Surface, Card } from "react-native-paper";
 import { Dropdown } from "react-native-element-dropdown";
 import { StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useGlobal } from "../../utils/GlobalContext.js";
+import CompanySmallCard from "../../components/CompanySmallCard.js";
 
 const Home = () => {
   const global = useGlobal();
@@ -74,106 +75,111 @@ const Home = () => {
   );
 
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Dropdown
-        style={[
-          {
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+      <View
+        style={{
+          flex: 1,
+          alignItems: "center",
+          paddingVertical: 20,
+        }}
+      >
+        <Dropdown
+          style={[
+            {
+              width: "90%",
+              height: 50,
+              borderColor: "gray",
+              borderWidth: 0.5,
+              borderRadius: 8,
+              paddingHorizontal: 8,
+              marginVertical: 12,
+            },
+            isFocus && { borderColor: "#FD8349" },
+          ]}
+          placeholderStyle={{ fontSize: 16 }}
+          selectedTextStyle={{
+            fontSize: 16,
+            fontWeight: "bold",
+          }}
+          inputSearchStyle={{
+            height: 40,
+            fontSize: 16,
+          }}
+          data={data}
+          search
+          maxHeight={300}
+          labelField="label"
+          valueField="value"
+          placeholder={!isFocus ? "Şehir Seçiniz..." : "..."}
+          searchPlaceholder="Search..."
+          value={value}
+          onFocus={() => setIsFocus(true)}
+          onBlur={() => setIsFocus(false)}
+          onChange={(item) => {
+            setValue(item.value);
+            setIsFocus(false);
+          }}
+          renderLeftIcon={() => (
+            <Ionicons
+              name="location-outline"
+              size={25}
+              style={{
+                marginRight: 5,
+                color: isFocus ? "#FD8349" : "black",
+              }}
+            />
+          )}
+        />
+        <FlatList
+          data={foods}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={{ flexGrow: 0 }}
+          contentContainerStyle={{
+            paddingHorizontal: 15,
+            marginTop: 10,
+            marginBottom: 25,
+          }}
+        />
+        <Text
+          style={{
+            textAlign: "left",
             width: "90%",
-            height: 50,
-            borderColor: "gray",
-            borderWidth: 0.5,
-            borderRadius: 8,
-            paddingHorizontal: 8,
-            marginVertical: 12,
-          },
-          isFocus && { borderColor: "#FD8349" },
-        ]}
-        placeholderStyle={{ fontSize: 16 }}
-        selectedTextStyle={{
-          fontSize: 16,
-          fontWeight: "bold",
-        }}
-        inputSearchStyle={{
-          height: 40,
-          fontSize: 16,
-        }}
-        data={data}
-        search
-        maxHeight={300}
-        labelField="label"
-        valueField="value"
-        placeholder={!isFocus ? "Şehir Seçiniz..." : "..."}
-        searchPlaceholder="Search..."
-        value={value}
-        onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
-        onChange={(item) => {
-          setValue(item.value);
-          setIsFocus(false);
-        }}
-        renderLeftIcon={() => (
-          <Ionicons
-            name="location-outline"
-            size={25}
-            style={{
-              marginRight: 5,
-              color: isFocus ? "#FD8349" : "black",
-            }}
-          />
-        )}
-      />
-      <FlatList
-        data={foods}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{
-          paddingHorizontal: 16,
-          marginTop: 10,
-        }}
-      />
-    </View>
+            fontSize: 18,
+            fontWeight: "bold",
+          }}
+        >
+          Şehrin Yıldızları
+        </Text>
+        <FlatList
+          data={foods}
+          renderItem={({ item }) => <CompanySmallCard />}
+          keyExtractor={(item) => item.id}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={{ flexGrow: 0 }}
+          contentContainerStyle={{
+            paddingHorizontal: 15,
+            marginTop: 15,
+            marginBottom: 25,
+          }}
+        />
+        <Text
+          style={{
+            textAlign: "left",
+            width: "90%",
+            fontSize: 18,
+            fontWeight: "bold",
+            
+          }}
+        >
+          Tüm Restoranlar
+        </Text>
+      </View>
+    </ScrollView>
   );
 };
 
 export default Home;
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: "white",
-    padding: 16,
-  },
-  icon: {
-    marginRight: 5,
-  },
-  label: {
-    position: "absolute",
-    backgroundColor: "white",
-    left: 22,
-    top: 8,
-    zIndex: 999,
-    paddingHorizontal: 8,
-    fontSize: 14,
-  },
-  placeholderStyle: {
-    fontSize: 16,
-  },
-  selectedTextStyle: {
-    fontSize: 16,
-  },
-  iconStyle: {
-    width: 20,
-    height: 20,
-  },
-  inputSearchStyle: {
-    height: 40,
-    fontSize: 16,
-  },
-});
