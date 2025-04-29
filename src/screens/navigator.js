@@ -68,7 +68,7 @@ const HomeTabs = () => {
                 style={{
                   color: "white",
                   fontSize: 22,
-                  fontFamily: 'TANHeadline'
+                  fontFamily: "TANHeadline",
                 }}
               >
                 Ne Yesem?
@@ -114,7 +114,7 @@ const HomeTabs = () => {
                 style={{
                   color: "white",
                   fontSize: 22,
-                  fontFamily: 'TANHeadline'
+                  fontFamily: "TANHeadline",
                 }}
               >
                 Ne Yesem?
