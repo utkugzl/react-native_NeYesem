@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { 
-  View, 
-  Image, 
-  TouchableOpacity, 
+import {
+  View,
+  Image,
+  TouchableOpacity,
   Keyboard,
   ScrollView,
   KeyboardAvoidingView,
   Platform,
-  FlatList
+  FlatList,
+  Linking,
 } from "react-native";
 import { Text, Divider, TextInput } from "react-native-paper";
 import { Ionicons } from "@expo/vector-icons";
@@ -17,18 +18,18 @@ const CompanyDetail = ({ route }) => {
   const { company } = route.params;
   const [keyboardHeight, setKeyboardHeight] = useState(0);
   const minus = Platform.OS === "ios" ? 35 : 280;
-  
+
   // Klavye yüksekliğini takip etmek için
   useEffect(() => {
     const keyboardWillShowListener = Keyboard.addListener(
-      Platform.OS === 'ios' ? 'keyboardWillShow' : 'keyboardDidShow',
+      Platform.OS === "ios" ? "keyboardWillShow" : "keyboardDidShow",
       (e) => {
         setKeyboardHeight(e.endCoordinates.height);
       }
     );
-    
+
     const keyboardWillHideListener = Keyboard.addListener(
-      Platform.OS === 'ios' ? 'keyboardWillHide' : 'keyboardDidHide',
+      Platform.OS === "ios" ? "keyboardWillHide" : "keyboardDidHide",
       () => {
         setKeyboardHeight(0);
       }
@@ -40,10 +41,23 @@ const CompanyDetail = ({ route }) => {
     };
   }, []);
 
+  const openMaps = (latitude, longitude, label) => {
+    const url = Platform.select({
+      ios: `http://maps.apple.com/?ll=${latitude},${longitude}&q=${encodeURIComponent(
+        label
+      )}`,
+      android: `geo:${latitude},${longitude}?q=${latitude},${longitude}(${encodeURIComponent(
+        label
+      )})`,
+    });
+
+    Linking.openURL(url);
+  };
+
   return (
     <View style={{ flex: 1 }}>
-      <ScrollView 
-        style={{ flex: 1 }} 
+      <ScrollView
+        style={{ flex: 1 }}
         contentContainerStyle={{ paddingBottom: 90 }}
         keyboardShouldPersistTaps="handled"
       >
@@ -64,7 +78,9 @@ const CompanyDetail = ({ route }) => {
               borderRadius: 6,
             }}
           >
-            <Text style={{ color: "#FD8349", fontWeight: "bold", fontSize: 16 }}>
+            <Text
+              style={{ color: "#FD8349", fontWeight: "bold", fontSize: 16 }}
+            >
               ⭐ {company.star} Puan
             </Text>
           </View>
@@ -78,11 +94,18 @@ const CompanyDetail = ({ route }) => {
           }}
         >
           <View style={{ flex: 1, paddingRight: 8 }}>
-            <Text style={{ fontWeight: "bold", fontSize: 18 }} numberOfLines={2}>
+            <Text
+              style={{ fontWeight: "bold", fontSize: 18 }}
+              numberOfLines={2}
+            >
               {company.name}
             </Text>
           </View>
           <TouchableOpacity
+            // onPress={() =>
+            //   openMaps(company.latitude, company.longitude, company.name)
+            // }
+            onPress={() => openMaps("41.0082", "28.9784", company.name)}
             activeOpacity={0.6}
             style={{
               padding: 12,
@@ -102,19 +125,17 @@ const CompanyDetail = ({ route }) => {
         </View>
         <Divider />
         <FlatList
-            data={[...Array(10)]}
-            renderItem={({ item }) => <Comment />}
-            keyExtractor={(item, index) => index.toString()}
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={{ paddingBottom: 10 }}
-            ListHeaderComponent={
-              <View style={{ marginTop: 10, paddingHorizontal: 16 }}>
-                <Text style={{ fontSize: 16, fontWeight: "bold" }}>
-                  Yorumlar
-                </Text>
-              </View>
-            }
-          />
+          data={[...Array(10)]}
+          renderItem={({ item }) => <Comment />}
+          keyExtractor={(item, index) => index.toString()}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ paddingBottom: 10 }}
+          ListHeaderComponent={
+            <View style={{ marginTop: 10, paddingHorizontal: 16 }}>
+              <Text style={{ fontSize: 16, fontWeight: "bold" }}>Yorumlar</Text>
+            </View>
+          }
+        />
       </ScrollView>
 
       {/* Yorum yazma alanı - Klavye durumuna göre pozisyonu ayarlanır */}
@@ -124,7 +145,7 @@ const CompanyDetail = ({ route }) => {
           bottom: keyboardHeight === 0 ? 0 : keyboardHeight - minus,
           left: 0,
           right: 0,
-          backgroundColor: 'white',
+          backgroundColor: "white",
         }}
       >
         <Divider />

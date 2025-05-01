@@ -1,10 +1,18 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
-const CompanyCardSmall = () => {
+const CompanyCardSmall = ({ item }) => {
+  const navigation = useNavigation();
   return (
-    <View
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={() => {
+        navigation.navigate("CompanyDetail", {
+          company: item,
+        });
+      }}
       style={{
         width: "90%",
         height: 100,
@@ -30,7 +38,7 @@ const CompanyCardSmall = () => {
         }}
       >
         <Image
-          source={{ uri: "https://picsum.photos/300/300" }}
+          source={{ uri: item.image }}
           style={{
             width: "90%",
             height: 80,
@@ -62,7 +70,7 @@ const CompanyCardSmall = () => {
             }}
             numberOfLines={3}
           >
-            Company Name
+            {item.name}
           </Text>
 
           <View
@@ -75,7 +83,7 @@ const CompanyCardSmall = () => {
             }}
           >
             <Text style={{ color: "white", fontWeight: "bold" }}>
-              ⭐ 4.5 Puan
+              ⭐ {item.star} Puan
             </Text>
           </View>
         </View>
@@ -95,12 +103,12 @@ const CompanyCardSmall = () => {
                 color: "gray",
               }}
             >
-              2.4 km
+              {item.distance} km
             </Text>
           </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
