@@ -5,7 +5,8 @@ import { Dropdown } from "react-native-element-dropdown";
 import { StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useGlobal } from "../../utils/GlobalContext.js";
-import CompanySmallCard from "../../components/CompanySmallCard.js";
+import CompanyCardBig from "../../components/CompanyCardBig.js";
+import CompanyCardSmall from "../../components/CompanyCardSmall.js";
 
 const Home = () => {
   const global = useGlobal();
@@ -200,7 +201,7 @@ const Home = () => {
         </Text>
         <FlatList
           data={companies}
-          renderItem={({ item }) => <CompanySmallCard item={item} />}
+          renderItem={({ item }) => <CompanyCardBig item={item} />}
           keyExtractor={(item) => item.id}
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -221,6 +222,17 @@ const Home = () => {
         >
           Tüm Restoranlar
         </Text>
+        <FlatList
+          data={companies}
+          renderItem={({ item }) => <CompanyCardSmall item={item} />}
+          keyExtractor={(item) => item.id}
+          showsHorizontalScrollIndicator={false}
+          style={{ width: "100%" }}
+          contentContainerStyle={{
+            alignItems: "center",
+            paddingVertical: 15,
+          }}
+        />
       </View>
     </ScrollView>
   );

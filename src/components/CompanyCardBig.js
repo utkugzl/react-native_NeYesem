@@ -4,7 +4,7 @@ import { Card, Text } from "react-native-paper";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-const CompanySmallCard = ({ item }) => {
+const CompanyCardBig = ({ item }) => {
   const navigation = useNavigation();
   return (
     <Card
@@ -82,4 +82,4 @@ const CompanySmallCard = ({ item }) => {
   );
 };
 
-export default CompanySmallCard;
+export default CompanyCardBig;
