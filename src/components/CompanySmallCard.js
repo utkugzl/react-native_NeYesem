@@ -2,8 +2,10 @@ import React from "react";
 import { View } from "react-native";
 import { Card, Text } from "react-native-paper";
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
-const CompanySmallCard = () => {
+const CompanySmallCard = ({ item }) => {
+  const navigation = useNavigation();
   return (
     <Card
       style={{
@@ -12,11 +14,16 @@ const CompanySmallCard = () => {
         width: 200,
         marginHorizontal: 12,
       }}
+      onPress={() => {
+        navigation.navigate("CompanyDetail", {
+          company: item,
+        });
+      }}
     >
       <View style={{ position: "relative" }}>
         <Card.Cover
           style={{ borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }}
-          source={{ uri: "https://picsum.photos/300/300" }}
+          source={{ uri: item.image }}
         />
 
         <View
@@ -40,7 +47,9 @@ const CompanySmallCard = () => {
               color: "white",
             }}
           />
-          <Text style={{ color: "#fff", fontWeight: "bold" }}>2.8 km</Text>
+          <Text style={{ color: "#fff", fontWeight: "bold" }}>
+            {item.distance} km
+          </Text>
         </View>
 
         <View
@@ -48,13 +57,15 @@ const CompanySmallCard = () => {
             position: "absolute",
             top: 10,
             right: 10,
-            backgroundColor: "rgba(0,0,0,0.4)",
+            backgroundColor: "white",
             paddingHorizontal: 8,
             paddingVertical: 4,
             borderRadius: 6,
           }}
         >
-          <Text style={{ color: "#fff", fontWeight: "bold" }}>⭐ 4.5 Puan</Text>
+          <Text style={{ color: "#FD8349", fontWeight: "bold" }}>
+            ⭐ {item.star} Puan
+          </Text>
         </View>
       </View>
 
@@ -64,7 +75,7 @@ const CompanySmallCard = () => {
           numberOfLines={1}
           ellipsizeMode="tail"
         >
-          Restoran İsmi
+          {item.name}
         </Text>
       </Card.Content>
     </Card>

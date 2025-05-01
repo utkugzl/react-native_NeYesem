@@ -35,6 +35,51 @@ const Home = () => {
     { label: "İzmir", value: "4" },
   ];
 
+  const companies = [
+    {
+      id: "1",
+      name: "Pizza Hut",
+      image: "https://picsum.photos/300/300",
+      star: 4.5,
+      distance: 2.8,
+    },
+    {
+      id: "2",
+      name: "Burger King",
+      image: "https://picsum.photos/300/300",
+      star: 4.0,
+      distance: 1.5,
+    },
+    {
+      id: "3",
+      name: "Domino's Pizza",
+      image: "https://picsum.photos/300/300",
+      star: 4.2,
+      distance: 3.0,
+    },
+    {
+      id: "4",
+      name: "Starbucks",
+      image: "https://picsum.photos/300/300",
+      star: 4.8,
+      distance: 0.5,
+    },
+    {
+      id: "5",
+      name: "McDonald's",
+      image: "https://picsum.photos/300/300",
+      star: 4.1,
+      distance: 2.0,
+    },
+    {
+      id: "6",
+      name: "KFC",
+      image: "https://picsum.photos/300/300",
+      star: 4.3,
+      distance: 1.2,
+    },
+  ];
+
   useEffect(() => {
     if (global.currentCity) {
       const matchingCity = data.find(
@@ -154,8 +199,8 @@ const Home = () => {
           Şehrin Yıldızları
         </Text>
         <FlatList
-          data={foods}
-          renderItem={({ item }) => <CompanySmallCard />}
+          data={companies}
+          renderItem={({ item }) => <CompanySmallCard item={item} />}
           keyExtractor={(item) => item.id}
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -172,7 +217,6 @@ const Home = () => {
             width: "90%",
             fontSize: 18,
             fontWeight: "bold",
-            
           }}
         >
           Tüm Restoranlar
