@@ -100,6 +100,9 @@ const CompanyDetail = ({ route }) => {
             >
               {company.name}
             </Text>
+            <Text style={{ fontSize: 14 }} numberOfLines={6}>
+              {company.description}
+            </Text>
           </View>
           <TouchableOpacity
             // onPress={() =>

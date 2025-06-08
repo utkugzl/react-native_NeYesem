@@ -290,9 +290,10 @@ const AddCompany = () => {
       </ScrollView>
       <View style={{ width: "100%", alignItems: "center" }}>
         <TouchableOpacity
+          disabled={!image || !location}
           onPress={() => setMapVisible(false)}
           style={{
-            backgroundColor: "#36c124",
+            backgroundColor: !image || !location ? "grey" : "#36c124",
             padding: 12,
             borderRadius: 8,
             width: "90%",
@@ -355,34 +356,7 @@ const AddCompany = () => {
             }}
           >
             {location && <Marker coordinate={location} />}
-          </MapView>
-          <View
-            style={{
-              height: 60,
-              backgroundColor: "white",
-              justifyContent: "center",
-              alignItems: "center",
-              borderBottomLeftRadius: 8,
-              borderBottomRightRadius: 8,
-            }}
-          >
-            <TouchableOpacity
-              onPress={() => setMapVisible(false)}
-              style={{
-                backgroundColor: "#36c124",
-                padding: 12,
-                borderRadius: 8,
-                width: "80%",
-                alignItems: "center",
-              }}
-            >
-              <Text
-                style={{ color: "white", fontWeight: "bold", fontSize: 16 }}
-              >
-                Konumu Kaydet
-              </Text>
-            </TouchableOpacity>
-          </View>
+          </MapView>       
         </Modal>
       </Portal>
     </>
