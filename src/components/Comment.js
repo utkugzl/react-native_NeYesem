@@ -55,7 +55,7 @@ const Comment = () => {
       </View>
 
       <Card.Content>
-        <Text style={{ fontSize: 14, color: "#333" }}>asdasda</Text>
+        <Text style={{ fontSize: 14, color: "#333" }}>Test Test Test</Text>
       </Card.Content>
     </Card>
   );
