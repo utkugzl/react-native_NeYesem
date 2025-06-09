@@ -1,12 +1,61 @@
 import React from "react";
-import { View, ScrollView, TouchableOpacity } from "react-native";
-import { Text, Avatar, Card, Divider } from "react-native-paper";
+import {
+  View,
+  ScrollView,
+  TouchableOpacity,
+  FlatList,
+  Image,
+} from "react-native";
+import { Text, Avatar, Card, Divider, Surface } from "react-native-paper";
 import { Ionicons } from "@expo/vector-icons";
 import ProfileButton from "../../components/ProfileButton.js";
 import { useNavigation } from "@react-navigation/native";
 
 const Profile = () => {
   const navigaiton = useNavigation();
+
+  const renderItem = ({ item }) => (
+    <Surface
+      style={{
+        padding: 8,
+        height: 80,
+        width: 80,
+        alignItems: "center",
+        justifyContent: "center",
+        marginHorizontal: 8,
+        borderRadius: 8,
+        backgroundColor: "white",
+      }}
+      elevation={2}
+    >
+      <Image
+        source={item.icon}
+        style={{
+          width: 50,
+          height: 50,
+          marginBottom: 0,
+        }}
+        resizeMode="contain"
+      />
+    </Surface>
+  );
+
+  const badges = [
+    { id: "1", icon: require("../../assets/badges/badge1.png") },
+    {
+      id: "2",
+      icon: require("../../assets/badges/badge2.png"),
+    },
+    {
+      id: "3",
+      icon: require("../../assets/badges/badge3.png"),
+    },
+    { id: "4", icon: require("../../assets/badges/badge4.png") },
+    { id: "5", icon: require("../../assets/badges/badge5.png") },
+    { id: "6", icon: require("../../assets/badges/badge6.png") },
+    { id: "7", icon: require("../../assets/badges/badge7.png") },
+  ];
+
   return (
     <View
       style={{
@@ -112,6 +161,31 @@ const Profile = () => {
             utku.guzel@gmail.com
           </Text>
         </View>
+      </View>
+      <View style={{ marginTop: 12 }}>
+        <Text
+          style={{
+            width: "90%",
+            fontSize: 18,
+            fontWeight: "bold",
+            marginLeft: 18,
+          }}
+        >
+          Rozetler
+        </Text>
+        <FlatList
+          data={badges}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={{ flexGrow: 0 }}
+          contentContainerStyle={{
+            paddingHorizontal: 15,
+            marginTop: 10,
+            marginBottom: 12,
+          }}
+        />
       </View>
       <ScrollView
         style={{

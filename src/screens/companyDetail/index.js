@@ -100,7 +100,7 @@ const CompanyDetail = ({ route }) => {
             >
               {company.name}
             </Text>
-            <Text style={{ fontSize: 14 }} numberOfLines={6}>
+            <Text style={{ fontSize: 14, marginTop: 6 }} numberOfLines={6}>
               {company.description}
             </Text>
           </View>

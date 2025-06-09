@@ -8,6 +8,7 @@ import { useGlobal } from "../../utils/GlobalContext.js";
 import CompanyCardBig from "../../components/CompanyCardBig.js";
 import CompanyCardSmall from "../../components/CompanyCardSmall.js";
 import { useNavigation } from "@react-navigation/native";
+import { allCompanies } from "../../utils/data.js";
 
 const Home = () => {
   const global = useGlobal();
@@ -51,6 +52,7 @@ const Home = () => {
     {
       id: "1",
       name: "Pizza Hut",
+      description: "En iyi pizzalar burada!",
       image: "https://picsum.photos/2600/260",
       star: 4.5,
       distance: 2.8,
@@ -58,6 +60,7 @@ const Home = () => {
     {
       id: "2",
       name: "Burger King",
+      description: "Lezzetli burgerler ve patates kızartması.",
       image: "https://picsum.photos/250/250",
       star: 4.0,
       distance: 1.5,
@@ -65,6 +68,7 @@ const Home = () => {
     {
       id: "3",
       name: "Domino's Pizza",
+      description: "Hızlı teslimat ve taze malzemeler.",
       image: "https://picsum.photos/210/210",
       star: 4.2,
       distance: 3.0,
@@ -72,6 +76,7 @@ const Home = () => {
     {
       id: "4",
       name: "Starbucks",
+      description: "Kahve ve tatlı keyfi.",
       image: "https://picsum.photos/230/230",
       star: 4.8,
       distance: 0.5,
@@ -79,6 +84,7 @@ const Home = () => {
     {
       id: "5",
       name: "McDonald's",
+      description: "Hızlı ve lezzetli yemekler.",
       image: "https://picsum.photos/240/240",
       star: 4.1,
       distance: 2.0,
@@ -86,6 +92,7 @@ const Home = () => {
     {
       id: "6",
       name: "KFC",
+      description: "Tavuk severler için en iyi seçenek.",
       image: "https://picsum.photos/200/200",
       star: 4.3,
       distance: 1.2,
@@ -235,7 +242,7 @@ const Home = () => {
             Tüm Restoranlar
           </Text>
           <FlatList
-            data={companies}
+            data={allCompanies}
             renderItem={({ item }) => <CompanyCardSmall item={item} />}
             keyExtractor={(item) => item.id}
             showsHorizontalScrollIndicator={false}
