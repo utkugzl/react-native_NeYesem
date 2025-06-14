@@ -32,7 +32,7 @@ const Login = () => {
   });
 
   const onLoginPress = (values) => {
-    if (values.username === "123" && values.password === "123") {
+    if (values.username === "uguzel" && values.password === "123") {
       navigation.navigate("HomeTabs");
     }
   };

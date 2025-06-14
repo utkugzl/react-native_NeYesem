@@ -1,5 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { View, FlatList, Image, ScrollView } from "react-native";
+import React, { useState, useEffect, use } from "react";
+import {
+  View,
+  FlatList,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import { Text, Surface, AnimatedFAB } from "react-native-paper";
 import { Dropdown } from "react-native-element-dropdown";
 import { StyleSheet } from "react-native";
@@ -8,7 +14,7 @@ import { useGlobal } from "../../utils/GlobalContext.js";
 import CompanyCardBig from "../../components/CompanyCardBig.js";
 import CompanyCardSmall from "../../components/CompanyCardSmall.js";
 import { useNavigation } from "@react-navigation/native";
-import { allCompanies } from "../../utils/data.js";
+import { allCompanies, starCompanies } from "../../utils/data.js";
 
 const Home = () => {
   const global = useGlobal();
@@ -17,6 +23,14 @@ const Home = () => {
   const [isFocus, setIsFocus] = useState(false);
 
   const [isExtended, setIsExtended] = useState(false);
+
+  const filteredAllCompanies = allCompanies.filter(
+    (company) => company.city === global.currentCity
+  );
+
+  const filterdStarCompanies = starCompanies.filter(
+    (company) => company.city === global.currentCity
+  );
 
   const onScroll = ({ nativeEvent }) => {
     const currentScrollPosition =
@@ -32,13 +46,20 @@ const Home = () => {
       name: "Burger",
       icon: require("../../assets/foods/hamburger.png"),
     },
+    { id: "3", name: "Tavuk", icon: require("../../assets/foods/tavuk.png") },
+    { id: "4", name: "Uzak Doğu", icon: require("../../assets/foods/uzakDogu.png") },
+    { id: "5", name: "İçecek", icon: require("../../assets/foods/icecek.png") },
+    { id: "6", name: "Tatlı", icon: require("../../assets/foods/tatlı.png") },
     {
-      id: "3",
+      id: "7",
       name: "Pastane",
       icon: require("../../assets/foods/pastane.png"),
     },
-    { id: "4", name: "İçecek", icon: require("../../assets/foods/icecek.png") },
-    { id: "5", name: "Tatlı", icon: require("../../assets/foods/tatlı.png") },
+        {
+      id: "8",
+      name: "Dondurma",
+      icon: require("../../assets/foods/dondurma.png"),
+    },
   ];
 
   const data = [
@@ -48,56 +69,6 @@ const Home = () => {
     { label: "İzmir", value: "4" },
   ];
 
-  const companies = [
-    {
-      id: "1",
-      name: "Pizza Hut",
-      description: "En iyi pizzalar burada!",
-      image: "https://picsum.photos/2600/260",
-      star: 4.5,
-      distance: 2.8,
-    },
-    {
-      id: "2",
-      name: "Burger King",
-      description: "Lezzetli burgerler ve patates kızartması.",
-      image: "https://picsum.photos/250/250",
-      star: 4.0,
-      distance: 1.5,
-    },
-    {
-      id: "3",
-      name: "Domino's Pizza",
-      description: "Hızlı teslimat ve taze malzemeler.",
-      image: "https://picsum.photos/210/210",
-      star: 4.2,
-      distance: 3.0,
-    },
-    {
-      id: "4",
-      name: "Starbucks",
-      description: "Kahve ve tatlı keyfi.",
-      image: "https://picsum.photos/230/230",
-      star: 4.8,
-      distance: 0.5,
-    },
-    {
-      id: "5",
-      name: "McDonald's",
-      description: "Hızlı ve lezzetli yemekler.",
-      image: "https://picsum.photos/240/240",
-      star: 4.1,
-      distance: 2.0,
-    },
-    {
-      id: "6",
-      name: "KFC",
-      description: "Tavuk severler için en iyi seçenek.",
-      image: "https://picsum.photos/200/200",
-      star: 4.3,
-      distance: 1.2,
-    },
-  ];
 
   useEffect(() => {
     if (global.currentCity) {
@@ -112,30 +83,37 @@ const Home = () => {
   }, [global.currentCity]);
 
   const renderItem = ({ item }) => (
-    <Surface
-      style={{
-        padding: 8,
-        height: 100,
-        width: 100,
-        alignItems: "center",
-        justifyContent: "center",
-        marginHorizontal: 8,
-        borderRadius: 8,
-        backgroundColor: "white",
-      }}
-      elevation={2}
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={() =>
+        navigation.navigate("FilteredCompany", { category: item.name })
+      }
     >
-      <Image
-        source={item.icon}
+      <Surface
         style={{
-          width: 60,
-          height: 60,
-          marginBottom: 0,
+          padding: 8,
+          height: 100,
+          width: 100,
+          alignItems: "center",
+          justifyContent: "center",
+          marginHorizontal: 8,
+          borderRadius: 8,
+          backgroundColor: "white",
         }}
-        resizeMode="contain"
-      />
-      <Text style={{ fontSize: 14, textAlign: "center" }}>{item.name}</Text>
-    </Surface>
+        elevation={2}
+      >
+        <Image
+          source={item.icon}
+          style={{
+            width: 60,
+            height: 60,
+            marginBottom: 0,
+          }}
+          resizeMode="contain"
+        />
+        <Text style={{ fontSize: 14, textAlign: "center" }}>{item.name}</Text>
+      </Surface>
+    </TouchableOpacity>
   );
 
   return (
@@ -183,6 +161,8 @@ const Home = () => {
             onChange={(item) => {
               setValue(item.value);
               setIsFocus(false);
+              global.setCurrentCity(item.label);
+              console.log("Seçilen şehir:", item.label);
             }}
             renderLeftIcon={() => (
               <Ionicons
@@ -219,7 +199,7 @@ const Home = () => {
             Şehrin Yıldızları
           </Text>
           <FlatList
-            data={companies}
+            data={filterdStarCompanies}
             renderItem={({ item }) => <CompanyCardBig item={item} />}
             keyExtractor={(item) => item.id}
             horizontal
@@ -242,7 +222,7 @@ const Home = () => {
             Tüm Restoranlar
           </Text>
           <FlatList
-            data={allCompanies}
+            data={filteredAllCompanies}
             renderItem={({ item }) => <CompanyCardSmall item={item} />}
             keyExtractor={(item) => item.id}
             showsHorizontalScrollIndicator={false}

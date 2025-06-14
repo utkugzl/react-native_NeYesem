@@ -11,6 +11,7 @@ import Home from "./home/index.js";
 import Profile from "./profile/index.js";
 import CompanyDetail from "./companyDetail/index.js";
 import AddCompany from "./addCompany/index.js";
+import FilteredCompany from "./filteredCompany/index.js";
 import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -201,6 +202,47 @@ const Nagivator = () => {
           <Stack.Screen
             name="CompanyDetail"
             component={CompanyDetail}
+            options={({ navigation }) => ({
+              headerShown: true,
+              headerStyle: {
+                backgroundColor: "#FD8349",
+              },
+              headerLeft: () => (
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                  <Ionicons
+                    name="chevron-back-outline"
+                    size={30}
+                    color="white"
+                    style={{ marginLeft: 10 }}
+                  />
+                </TouchableOpacity>
+              ),
+              headerTitle: () => (
+                <View
+                  style={{
+                    flex: 1,
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: "white",
+                      fontSize: 20,
+                      fontWeight: "bold",
+                      fontFamily: "TANHeadline",
+                    }}
+                  >
+                    Ne Yesem?
+                  </Text>
+                </View>
+              ),
+              headerTitleAlign: "center",
+            })}
+          />
+          <Stack.Screen
+            name="FilteredCompany"
+            component={FilteredCompany}
             options={({ navigation }) => ({
               headerShown: true,
               headerStyle: {
