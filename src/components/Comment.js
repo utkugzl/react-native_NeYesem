@@ -3,9 +3,10 @@ import { View, Text } from "react-native";
 import { Card, Avatar } from "react-native-paper";
 import { Ionicons } from "@expo/vector-icons";
 
-const Comment = () => {
-  const filledStars = Math.floor(Math.random() * 6);
+const Comment = ({ name, text, rating }) => {
+  const filledStars = Math.floor(rating);
   const emptyStars = 5 - filledStars;
+
   return (
     <Card
       style={{
@@ -36,7 +37,7 @@ const Comment = () => {
               marginBottom: 4,
             }}
           >
-            Test User
+            {name}
           </Text>
           <View style={{ flexDirection: "row" }}>
             {[...Array(filledStars)].map((_, i) => (
@@ -55,7 +56,7 @@ const Comment = () => {
       </View>
 
       <Card.Content>
-        <Text style={{ fontSize: 14, color: "#333" }}>Test Test Test</Text>
+        <Text style={{ fontSize: 14, color: "#333" }}>{text}</Text>
       </Card.Content>
     </Card>
   );

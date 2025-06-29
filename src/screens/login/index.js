@@ -73,7 +73,7 @@ const Login = () => {
           }}
         >
           <TextInput
-            label="Username"
+            label="Kullanıcı Adı"
             mode="outlined"
             value={formik.values.username}
             onChangeText={formik.handleChange("username")}
@@ -89,7 +89,7 @@ const Login = () => {
             {formik.errors.username}
           </HelperText>
           <TextInput
-            label="Password"
+            label="Şifre"
             mode="outlined"
             secureTextEntry={true}
             value={formik.values.password}
@@ -127,7 +127,7 @@ const Login = () => {
               color: "white",
             }}
           >
-            Login
+            Giriş Yap
           </Button>
           <View
             style={{
@@ -137,7 +137,13 @@ const Login = () => {
               alignItems: "center",
             }}
           >
-            <Text>Don't you have an account ?</Text>
+            <Text
+              style={{
+                fontSize: 16,
+              }}
+            >
+              Hesabın yok mu ?
+            </Text>
             <Button
               onPress={() => {
                 navigation.navigate("Register");
@@ -158,7 +164,7 @@ const Login = () => {
                 elevation: 15,
               }}
             >
-              Register
+              Kayıt Ol
             </Button>
           </View>
         </View>

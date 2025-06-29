@@ -355,7 +355,7 @@ const Nagivator = () => {
                       fontWeight: "bold",
                     }}
                   >
-                    Register
+                    Kayıt Ol
                   </Text>
                 </View>
               ),

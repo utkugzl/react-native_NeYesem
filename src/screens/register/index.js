@@ -46,7 +46,7 @@ const Register = () => {
       showsHorizontalScrollIndicator={false}
     >
       <TextInput
-        label="Name"
+        label="Ad"
         mode="outlined"
         value={formik.values.name}
         onChangeText={formik.handleChange("name")}
@@ -62,7 +62,7 @@ const Register = () => {
         {formik.errors.name}
       </HelperText>
       <TextInput
-        label="Surname"
+        label="Soyad"
         mode="outlined"
         value={formik.values.surname}
         onChangeText={formik.handleChange("surname")}
@@ -78,7 +78,7 @@ const Register = () => {
         {formik.errors.surname}
       </HelperText>
       <TextInput
-        label="Username"
+        label="Kullanıcı Adı"
         mode="outlined"
         value={formik.values.username}
         onChangeText={formik.handleChange("username")}
@@ -94,7 +94,7 @@ const Register = () => {
         {formik.errors.username}
       </HelperText>
       <TextInput
-        label="E-mail"
+        label="E-posta"
         mode="outlined"
         value={formik.values.email}
         onChangeText={formik.handleChange("email")}
@@ -110,7 +110,7 @@ const Register = () => {
         {formik.errors.email}
       </HelperText>
       <TextInput
-        label="Password"
+        label="Şifre"
         mode="outlined"
         secureTextEntry={true}
         value={formik.values.password}
@@ -127,7 +127,7 @@ const Register = () => {
         {formik.errors.password}
       </HelperText>
       <TextInput
-        label="Confirm Password"
+        label="Şifre Tekrar"
         mode="outlined"
         secureTextEntry={true}
         value={formik.values.confirmPassword}
@@ -165,7 +165,7 @@ const Register = () => {
           color: "white",
         }}
       >
-        Login
+        Kayıt Ol
       </Button>
     </ScrollView>
   );

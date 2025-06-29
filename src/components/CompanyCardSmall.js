@@ -5,6 +5,28 @@ import { useNavigation } from "@react-navigation/native";
 
 const CompanyCardSmall = ({ item }) => {
   const navigation = useNavigation();
+
+  const companyImages = {
+    "pizza-hut.jpg": require("../assets/companies/pizza-hut.jpg"),
+    "mc-donalds": require("../assets/companies/mc-donalds.jpg"),
+    "dominos": require("../assets/companies/dominos.jpg"),
+    "starbucks": require("../assets/companies/starbucks.jpg"),
+    "simit-sarayı": require("../assets/companies/simit-sarayı.jpg"),
+    "sushico": require("../assets/companies/sushico.jpg"),
+    "yildiz-pastanesi": require("../assets/companies/yildiz-pastanesi.jpeg"),
+    "burger-king": require("../assets/companies/burger-king.jpg"),
+    "kahve-dunyasi": require("../assets/companies/kahve-dunyasi.webp"),
+    "kfc": require("../assets/companies/kfc.jpg"),
+    "cook-time": require("../assets/companies/cook-time.jpeg"),
+    "tavuk-dunyasi": require("../assets/companies/tavuk-dunyasi.webp"),
+    "little-caesars": require("../assets/companies/little-caesars.jpg"),
+    "popeyes": require("../assets/companies/popeyes.jpg"),
+    "sushi-house": require("../assets/companies/sushi-house.jpg"),
+    "edeler": require("../assets/companies/edeler.webp"),
+    "dondurma": require("../assets/companies/dondurma.webp"),
+    "mado": require("../assets/companies/mado.webp"),
+  };
+
   return (
     <TouchableOpacity
       activeOpacity={0.8}
@@ -38,7 +60,7 @@ const CompanyCardSmall = ({ item }) => {
         }}
       >
         <Image
-          source={{ uri: item.image }}
+          source={companyImages[item.image]}
           style={{
             width: "90%",
             height: 80,
