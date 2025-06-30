@@ -47,7 +47,11 @@ const Home = () => {
       icon: require("../../assets/foods/hamburger.png"),
     },
     { id: "3", name: "Tavuk", icon: require("../../assets/foods/tavuk.png") },
-    { id: "4", name: "Uzak Doğu", icon: require("../../assets/foods/uzakDogu.png") },
+    {
+      id: "4",
+      name: "Uzak Doğu",
+      icon: require("../../assets/foods/uzakDogu.png"),
+    },
     { id: "5", name: "İçecek", icon: require("../../assets/foods/icecek.png") },
     { id: "6", name: "Tatlı", icon: require("../../assets/foods/tatlı.png") },
     {
@@ -55,7 +59,7 @@ const Home = () => {
       name: "Pastane",
       icon: require("../../assets/foods/pastane.png"),
     },
-        {
+    {
       id: "8",
       name: "Dondurma",
       icon: require("../../assets/foods/dondurma.png"),
@@ -66,9 +70,7 @@ const Home = () => {
     { label: "Ankara", value: "1" },
     { label: "Sakarya", value: "2" },
     { label: "İstanbul", value: "3" },
-    { label: "İzmir", value: "4" },
   ];
-
 
   useEffect(() => {
     if (global.currentCity) {

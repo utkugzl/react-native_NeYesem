@@ -101,16 +101,6 @@ export const allCompanies = [
   },
   {
     id: "11",
-    name: "Çaycı İsmail",
-    description: "Geleneksel Türk çayı ve simit.",
-    image: "pizza-hut.jpg",
-    star: 4.2,
-    distance: 0.8,
-    category: ["İçecek", "Pastane", "Tatlı"],
-    city: "İzmir",
-  },
-  {
-    id: "12",
     name: "Mado",
     description: "Dondurma ve tatlı çeşitleri.",
     image: "mado",
@@ -120,7 +110,7 @@ export const allCompanies = [
     city: "İstanbul",
   },
   {
-    id: "13",
+    id: "12",
     name: "Saray Muhallebicisi",
     description: "Geleneksel Türk tatlıları.",
     image: "pizza-hut.jpg",
@@ -130,7 +120,7 @@ export const allCompanies = [
     city: "İstanbul",
   },
   {
-    id: "15",
+    id: "13",
     name: "Dondurma Durağı",
     description: "Yazın vazgeçilmezi dondurmalar.",
     image: "dondurma",
@@ -140,17 +130,7 @@ export const allCompanies = [
     city: "Sakarya",
   },
   {
-    id: "17",
-    name: "Kumpirci",
-    description: "En iyi kumpir çeşitleri.",
-    image: "pizza-hut.jpg",
-    star: 4.4,
-    distance: 1.9,
-    category: ["İçecek", "Pastane", "Tatlı"],
-    city: "İzmir",
-  },
-  {
-    id: "19",
+    id: "14",
     name: "Popeyes",
     description: "Tavuk ve atıştırmalıklar.",
     image: "popeyes",
@@ -160,7 +140,7 @@ export const allCompanies = [
     city: "Sakarya",
   },
   {
-    id: "20",
+    id: "15",
     name: "Tavuk Dünyası",
     description: "Tavuk severler için en iyi seçenek.",
     image: "tavuk-dunyasi",
@@ -170,7 +150,7 @@ export const allCompanies = [
     city: "Sakarya",
   },
   {
-    id: "21",
+    id: "16",
     name: "Sushi House",
     description: "Lezzetli suşi çeşitleri.",
     image: "sushi-house",
@@ -180,7 +160,7 @@ export const allCompanies = [
     city: "Sakarya",
   },
   {
-    id: "22",
+    id: "17",
     name: "SushiCo",
     description: "En iyi suşi çeşitleri.",
     image: "sushico",
@@ -190,7 +170,7 @@ export const allCompanies = [
     city: "Ankara",
   },
   {
-    id: "23",
+    id: "18",
     name: "Little Caesar's",
     description: "Hızlı ve lezzetli pizzalar.",
     image: "little-caesars",
@@ -200,7 +180,7 @@ export const allCompanies = [
     city: "Sakarya",
   },
   {
-    id: "24",
+    id: "19",
     name: "Edeler Dondurma",
     description: "En iyi dondurmalar burada!",
     image: "edeler",
@@ -209,21 +189,11 @@ export const allCompanies = [
     category: ["Dondurma"],
     city: "Sakarya",
   },
-  {
-    id: "25",
-    name: "Çaycı Ali",
-    description: "Geleneksel Türk çayı ve simit.",
-    image: "pizza-hut.jpg",
-    star: 4.2,
-    distance: 1.1,
-    category: ["İçecek", "Pastane", "Tatlı"],
-    city: "İzmir",
-  },
 ];
 
 export const starCompanies = [
   {
-    id: "1",
+    id: "7",
     name: "Pizza Hut",
     description: "En iyi pizzalar burada!",
     image: "pizza-hut.jpg",
@@ -233,7 +203,7 @@ export const starCompanies = [
     city: "Ankara",
   },
   {
-    id: "2",
+    id: "5",
     name: "Burger King",
     description: "Lezzetli burgerler ve patates kızartması.",
     image: "burger-king",
@@ -263,7 +233,7 @@ export const starCompanies = [
     city: "Ankara",
   },
   {
-    id: "5",
+    id: "2",
     name: "McDonald's",
     description: "Hızlı ve lezzetli yemekler.",
     image: "mc-donalds",
@@ -283,7 +253,7 @@ export const starCompanies = [
     city: "Sakarya",
   },
   {
-    id: "7",
+    id: "10",
     name: "Cook Time",
     description: "En iyi hamburgerler burada!",
     image: "cook-time",
@@ -293,7 +263,7 @@ export const starCompanies = [
     city: "Sakarya",
   },
   {
-    id: "8",
+    id: "1",
     name: "Kahve Dünyası",
     description: "Türk kahvesi ve tatlı çeşitleri.",
     image: "kahve-dunyasi",

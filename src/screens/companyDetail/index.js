@@ -91,6 +91,7 @@ const CompanyDetail = ({ route }) => {
       name: "Utku Güzel",
       text: global.commentText,
       rating: rating,
+      companyId: company.id,
     };
 
     global.setComments([newComment, ...global.comments]);
@@ -174,20 +175,39 @@ const CompanyDetail = ({ route }) => {
           </TouchableOpacity>
         </View>
         <Divider />
-        <FlatList
-          data={global.comments}
-          renderItem={({ item }) => (
-            <Comment name={item.name} text={item.text} rating={item.rating} />
-          )}
-          keyExtractor={(item, index) => index.toString()}
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ paddingBottom: 10 }}
-          ListHeaderComponent={
-            <View style={{ marginTop: 10, paddingHorizontal: 16 }}>
-              <Text style={{ fontSize: 16, fontWeight: "bold" }}>Yorumlar</Text>
-            </View>
-          }
-        />
+        {global.comments.filter((item) => item.companyId === company.id)
+          .length > 0 ? (
+          <FlatList
+            data={global.comments.filter(
+              (item) => item.companyId === company.id
+            )}
+            renderItem={({ item }) => (
+              <Comment name={item.name} text={item.text} rating={item.rating} />
+            )}
+            keyExtractor={(item, index) => index.toString()}
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ paddingBottom: 10 }}
+            ListHeaderComponent={
+              <View style={{ marginTop: 10, paddingHorizontal: 16 }}>
+                <Text style={{ fontSize: 16, fontWeight: "bold" }}>
+                  Yorumlar
+                </Text>
+              </View>
+            }
+          />
+        ) : (
+          <View
+            style={{
+              padding: 16,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Text style={{ fontSize: 18, color: "gray", marginTop: 20 }}>
+              Bu işletmeye henüz yorum yapılmamış.
+            </Text>
+          </View>
+        )}
       </ScrollView>
 
       {/* Yorum yazma alanı - Klavye durumuna göre pozisyonu ayarlanır */}

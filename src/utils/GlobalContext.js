@@ -71,71 +71,85 @@ export const GlobalProvider = ({ children }) => {
       name: "Ahmet Yılmaz",
       text: "Gerçekten çok güzel bir deneyimdi. Tavsiye ederim!",
       rating: 5,
+      companyId: "10",
     },
     {
       name: "Elif Demir",
       text: "Çalışanlar çok ilgiliydi. Tekrar tercih ederim.",
       rating: 4,
+      companyId: "5"
     },
     {
       name: "Mert Can",
       text: "Fiyatlar biraz yüksek ama kalite yerinde.",
       rating: 3,
+      companyId: "10",
     },
     {
       name: "Zeynep Kaya",
       text: "Beklediğimden çok daha iyi bir hizmet aldım.",
       rating: 5,
+      companyId: "10",
     },
     {
       name: "Ali Vural",
       text: "Park yeri sıkıntılı ama genel olarak memnun kaldım.",
       rating: 3,
+      companyId: "5",
     },
     {
       name: "Ayşe Koç",
       text: "Ortam çok güzel ama biraz kalabalıktı.",
       rating: 4,
+      companyId: "10",
     },
     {
       name: "Mehmet Şahin",
       text: "Tek kelimeyle harika!",
       rating: 5,
+      companyId: "2"
     },
     {
       name: "Fatma Öz",
       text: "Servis biraz yavaştı ama yemekler lezzetliydi.",
       rating: 3,
+      companyId: "5"
     },
     {
       name: "Burak Çelik",
       text: "Konum olarak çok merkezi, ulaşım kolay.",
       rating: 4,
+      companyId: "10",
     },
     {
       name: "Esra Aydın",
       text: "İlk defa geldim, çok memnun kaldım.",
       rating: 5,
+      companyId: "10",
     },
     {
       name: "Kemal Arslan",
       text: "Maalesef hiç memnun kalmadım. Öncelikle rezervasyonumuz olmasına rağmen 45 dakika bekletildik. Masalar kirli, çalışanlar ilgisiz ve yemekler soğuktu. Fiyatlara göre aldığımız hizmet kesinlikle değmedi. Bir daha gelmeyeceğim ve kimseye de tavsiye etmem. Para kaybı oldu resmen.",
       rating: 1,
+      companyId: "5",
     },
     {
       name: "Selin Özkan",
       text: "Buraya özel günümüzü kutlamaya gelmiştik ama tam bir hayal kırıklığı yaşadık. Öncelikle ambiente güzel ama bu kadar. Sipariş verdiğimiz yemekler 1 saati aştı ve geldiğinde de beklediğimiz lezzette değildi. Garsonlar sürekli başka masalarla ilgileniyordu, bizim masaya hiç uğramadılar. Hesap geldiğinde de fiyatlar menüdekinden farklıydı. Açıklama istediğimizde de tatmin edici bir cevap alamadık. Gerçekten çok üzüldük.",
       rating: 2,
+      companyId: "5",
     },
     {
       name: "Emre Doğan",
       text: "3 arkadaşımla birlikte akşam yemeği için gittik. Mekan görünüş olarak güzel dekore edilmiş ama hizmet kalitesi maalesef çok düşük. Siparişimizi aldıktan sonra garson bir daha gelmedi masaya. Su bile isteyemedik. Yemekler geldiğinde soğuk ve tuzsuzdu. Sosları ekstra ücretli, bu da ayrı bir problem. Hesap da oldukça yüksek geldi kaliteye göre. Tekrar gitmem.",
       rating: 2,
+      companyId: "6",
     },
     {
       name: "Gül Yıldız",
       text: "İnternetten görüp geldik ama fotoğraflar yanıltıcıymış. Mekan çok küçük ve dar, masalar birbirine çok yakın. Ses yalıtımı da yok, yan masadaki konuşmaları duyabiliyorsunz. Yemek kalitesi ortalama, fiyatlar ise oldukça yüksek. Çalışanlar aceleci davranıyor, rahat bir yemek yiyemiyorsunuz. Beklentimin çok altındaydı.",
       rating: 2,
+      companyId: "10",
     },
     {
       name: "Okan Mutlu",
@@ -146,11 +160,13 @@ export const GlobalProvider = ({ children }) => {
       name: "Canan Tekin",
       text: "Arkadaşlarımın tavsiyesi üzerine gittim ve gerçekten çok güzel bir akşam geçirdik. Mekan sıcak ve samimi bir atmosfere sahip. Menü çeşitliliği bol ve her damak zevkine uygun seçenekler var. Ben vejeteryan menüden seçtim ve çok memnun kaldım. Çalışanlar çok nazik ve yardımsever. Tek eksik yanı biraz gürültülü olması ama genel olarak çok başarılı. Fiyat performans açısından da gayet iyi.",
       rating: 4,
+      companyId: "10",
     },
     {
       name: "Hasan Kılıç",
       text: "Hiç tavsiye etmem. Hijyen konusunda ciddi sorunlar var. Tuvaletler pis, masalar yapışkan ve çatal bıçaklar lekeli geldi. Yemeği yarım bırakıp çıktık. Böyle bir yerde yemek yemek sağlık açısından risk teşkil ediyor. Yetkililerin mutlaka kontrol etmesi gerekiyor.",
       rating: 1,
+      companyId: "2"
     },
     {
       name: "Nazlı Koray",
@@ -166,12 +182,44 @@ export const GlobalProvider = ({ children }) => {
       name: "Cem Özgür",
       text: "Paket servis sipariş etmiştik, tam 2 saat gecikti! Telefonla aradığımızda sürekli 'yoldayız' dediler ama gelen yemekler soğuk ve dağınıktı. Soslar dökülmüş, ambalajlar yırtık. Bu kadar özensizlik kabul edilemez. Paket servis hizmetinizi gözden geçirmenizi öneriyorum.",
       rating: 1,
+      companyId: "10",
     },
     {
       name: "Sibel Aktaş",
       text: "Vegan seçenekleri için geldim ve çok memnun kaldım. Menüde bol seçenek var ve hepsi çok lezzetli hazırlanmış. Çalışanlar vegan beslenme konusunda bilgiliydi ve öneriler verdiler. Bu tür alternatif beslenme tarzlarını destekledikleri için çok mutluyum. Arkadaşlarıma da tavsiye ettim, onlar da çok beğendi.",
       rating: 4,
+      companyId: "10",
     },
+    {
+      name: "Deniz Yılmaz",
+      text: "Çalışanlar çok ilgisizdi, siparişimiz yanlış geldi ve düzeltmeleri 20 dakika sürdü. Yemekler de soğuk geldi. Fiyatlar yüksek ama kalite çok düşük. Bir daha asla gelmem.",
+      rating: 2,
+      companyId: "5",
+    },
+    {
+      name: "Selçuk Erdem",
+      text: "Mekan çok kalabalıktı, rezervasyon yaptırmamıza rağmen masamız hazır değildi. Bekleme süresi çok uzundu. Yemekler ortalama, fiyatlar ise oldukça yüksek. Hizmet kalitesi kesinlikle düşmüş.",
+      rating: 2,
+      companyId: "5",
+    },
+    {
+      name: "Aylin Çelik",
+      text: "Çalışanlar çok güleryüzlüydü, özellikle garsonumuz çok yardımcı oldu. Yemekler lezzetliydi ama fiyatlar biraz yüksek geldi. Yine de genel olarak memnun kaldık.",
+      rating: 4,
+      companyId: "10",
+    },
+    {
+      name: "Oğuzhan Polat",
+      text: "Mekan çok şık ve modern, özellikle akşam ışıklandırması çok hoş. Yemekler taze ve lezzetliydi. Fiyatlar ortalama seviyede, kaliteye göre gayet uygun. Kesinlikle tekrar geleceğiz.",
+      rating: 5,
+      companyId: "2",
+    },
+    {
+      name: "Derya Korkmaz",
+      text: "Çalışanlar çok ilgisizdi, siparişimiz yanlış geldi ve düzeltmeleri 20 dakika sürdü. Yemekler de soğuk geldi. Fiyatlar yüksek ama kalite çok düşük. Bir daha asla gelmem.",
+      rating: 2,
+      companyId: "2",
+    }
   ];
   
   const [comments, setComments] = useState(dummyComments);
