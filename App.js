@@ -1,9 +1,13 @@
 import { PaperProvider } from "react-native-paper";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View , LogBox} from "react-native";
 import Nagivator from "./src/screens/navigator.js";
 import { GlobalProvider } from "./src/utils/GlobalContext.js";
 import { theme } from "./src/utils/theme.js";
 import { useFonts } from "expo-font";
+
+LogBox.ignoreLogs([
+  'VirtualizedLists should never be nested'
+]); 
 
 export default function App() {
   const [fontsLoaded] = useFonts({

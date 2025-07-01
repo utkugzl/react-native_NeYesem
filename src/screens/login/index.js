@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   Keyboard,
   KeyboardAvoidingView,
+  Alert,
 } from "react-native";
 import { TextInput, HelperText, Button, Text } from "react-native-paper";
 import React, { useEffect } from "react";
@@ -34,6 +35,10 @@ const Login = () => {
   const onLoginPress = (values) => {
     if (values.username === "uguzel" && values.password === "123") {
       navigation.navigate("HomeTabs");
+    } else {
+      Alert.alert("Hata", "Lütfen kullanıcı adı ve şifre girin.", [
+        { text: "Tamam" },
+      ]);
     }
   };
   return (

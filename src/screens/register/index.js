@@ -2,8 +2,11 @@ import { View, ScrollView } from "react-native";
 import { TextInput, HelperText, Button, Text } from "react-native-paper";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useNavigation } from "@react-navigation/native";
 
 const Register = () => {
+  const navigation = useNavigation();
+
   const validationSchemaRegister = Yup.object({
     name: Yup.string().required("Name is required"),
     surname: Yup.string().required("Surname is required"),
@@ -145,7 +148,15 @@ const Register = () => {
       </HelperText>
       <Button
         mode="contained"
-        onPress={formik.handleSubmit}
+        onPress={() => {
+          if (formik.isValid) {
+            formik.resetForm(); // Reset form after successful submission
+            navigation.navigate("Login"); // Navigate to Login screen after successful registration
+          } else {
+            console.log("Form is invalid");
+          }
+        }}
+        //disabled={loading} // Uncomment if you have a loading state
         //loading={loading}
         style={{
           marginTop: 6,
